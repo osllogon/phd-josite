@@ -37,6 +37,9 @@ runs:
     - name: Build Slides
       shell: bash
       run: |
+        # Store current branch
+        CURRENT_BRANCH=$(git branch --show-current)
+        
         echo "Updating Slides"
         cd src && uv run mkslides build . -d ../docs/
         cd ..
