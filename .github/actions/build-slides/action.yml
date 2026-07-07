@@ -38,7 +38,7 @@ runs:
       shell: bash
       run: |
         echo "Updating Slides"
-        cd src && uv run mkslides build . -d site/
+        cd src && uv run mkslides build . -d ../site/
         cd ..
         git checkout gh-pages
         git add -A
