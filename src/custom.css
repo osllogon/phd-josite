@@ -35,6 +35,40 @@
     z-index: 1000;
 }
 
+/* Hide the global logo in PDF and use per-slide logo instead */
+html.reveal-print .reveal::after {
+    display: none !important;
+}
+
+html.reveal-print .reveal .slides .pdf-page {
+    position: relative;
+}
+
+html.reveal-print .reveal .slides .pdf-page::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    background: url("images/icai_logo.png") no-repeat center/contain;
+    z-index: 1000;
+}
+
+/* Add margins in PDF so content doesn't overflow and the logo has space */
+html.reveal-print .reveal .slides section {
+    padding: 80px 60px 60px 60px !important;
+    box-sizing: border-box !important;
+}
+
+/* Scale down images in PDF to fit within the padded area */
+html.reveal-print .reveal .slides section img {
+    max-height: 65vh !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain;
+}
+
 .reveal a {
     color: #e6b800;
 }
@@ -117,7 +151,24 @@ div.multicolumn {
     background-color: #fff9c4 !important;
 }
 
-/* .reveal .mermaid marker path {
-    fill: #e6b800 !important;
-    stroke: #e6b800 !important;
-} */
+.reveal p, .reveal li {
+    text-align: justify;
+}
+
+/* Hide slide numbers in PDF print mode */
+html.print-pdf .reveal .slide-number,
+html.print-pdf .reveal .slide-number-pdf,
+html.reveal-print .reveal .slide-number,
+html.reveal-print .reveal .slide-number-pdf,
+.print-pdf .slide-number,
+.print-pdf .slide-number-pdf {
+    display: none !important;
+}
+
+@media print {
+    .slide-number,
+    .reveal .slide-number,
+    .reveal .slide-number-pdf {
+        display: none !important;
+    }
+}

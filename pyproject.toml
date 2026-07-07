@@ -1,7 +1,7 @@
 [project]
-name = "slides"
+name = "josite-2026"
 version = "2027"
-description = "Example of Slides for ICAI courses"
+description = "Slides for Josite Conference 2026"
 authors = [
     {name = "Oscar Llorente Gonzalez", email = "ollorente@comillas.edu"},
 ]

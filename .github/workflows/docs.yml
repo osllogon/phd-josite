@@ -1,0 +1,36 @@
+name: Documentation
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-deploy-slides:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    name: Build Slides
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python & Install Dependencies
+        uses: ./.github/actions/setup-env
+
+      - name: Get Version
+        id: version
+        uses: ./.github/actions/obtain-version
+
+      - name: Build Slides
+        uses: ./.github/actions/build-slides

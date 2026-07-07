@@ -1,0 +1,45 @@
+name: Build Slides
+description: Build and publish Slides in gh-pages
+
+runs:
+  using: composite
+  steps:
+    - name: Configure Git
+      shell: bash
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+
+    - name: Setup gh-pages Branch
+      shell: bash
+      run: |
+        # Store current branch
+        CURRENT_BRANCH=$(git branch --show-current)
+
+        # Check if gh-pages branch exists
+        if git ls-remote --heads origin gh-pages | grep -q gh-pages; then
+          echo "gh-pages branch exists, overwriting with latest from main..."
+          git branch -D gh-pages 2>/dev/null || true
+          git checkout --orphan gh-pages
+          git reset --hard
+          git commit --allow-empty -m "Reset gh-pages from main"
+          git push origin gh-pages --force
+          git checkout "$CURRENT_BRANCH" 
+        else
+          echo "gh-pages branch doesn't exist, creating..."
+          git checkout --orphan gh-pages
+          git reset --hard
+          git commit --allow-empty -m "Initial gh-pages commit"
+          git push origin gh-pages
+          git checkout "$CURRENT_BRANCH"
+        fi
+
+    - name: Build Slides
+      shell: bash
+      run: |
+        echo "Updating Slides"
+        cd src && uv run mkslides build . -d site/
+        cd ..
+        git add -A
+        git commit -m "update slides"
+        git push origin gh-pages --force

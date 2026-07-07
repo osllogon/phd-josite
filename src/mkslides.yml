@@ -6,6 +6,8 @@ slides:
 revealjs:
     height: 1080
     width: 1920
+    slideNumber: "c/t"
+    pdfMaxPagesPerSlide: 1
 plugins:
     - name: RevealMermaid
       extra_javascript:
