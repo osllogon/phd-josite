@@ -12,5 +12,5 @@ The main topic of this thesis is how to make scalable what is known in the liter
 
 ## Directed by
 
-- Jaime Boal
+- [Jaime Boal](https://www.linkedin.com/in/jboalml)
 - Eugenio Sanchez
