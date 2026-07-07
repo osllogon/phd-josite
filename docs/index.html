@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        
+            <link rel="icon" href="images/icai_logo.png">
+        
+
+        <link rel="stylesheet" href="mkslides-assets/reveal-js/dist/reveal.css" />
+
+        
+            <link rel="stylesheet" href="mkslides-assets/reveal-js/dist/theme/white.css" />
+        
+        
+            <link rel="stylesheet" href="mkslides-assets/highlight-js-themes/atom-one-dark.css" />
+        
+
+        
+            
+        
+            
+                
+                    <link rel="stylesheet" href="custom.css" />
+                
+            
+        
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-markdown
+                
+                >
+                    <!-- The markdown must be placed to the whole left to prevent indentation issues like https://github.com/MartenBE/mkslides/issues/52 -->
+                    <textarea data-template>
+# Parallelizing Node-Level Explainability in Graph Neural Networks
+
+#### Oscar Llorente Gonzalez (ollorente@comillas.edu)
+
+---
+
+## Explainability in Deep Learning
+
+<img src="images/xai.png" width="70%"/>
+
+---
+
+## What are Graph Neural Networks?
+
+<img src="images/gnn.png" width="80%"/>
+
+---
+
+## Explainability in Graph Neural Networks
+
+<img src="images/xai_gnn.png" width="100%"/>
+
+---
+
+## What is Gradient Mixing?
+
+If a node is a neighbor or two other nodes, in the backward gradient coming from those nodes will be averaged. If your explanation depends on it, then it is contaminated.
+
+<img src="images/gradient_mixing.png" alt="drawing" width="100%"/>
+
+---
+
+## Why XAI in a GNN cannot be parallelized?
+
+<img src="images/gradient_mixing_example.png" width="100%"/>
+
+---
+
+## Proposed Methodology
+
+<div class="multicolumn">
+<div>
+
+<img src="images/flow.png" alt="drawing" width="100%"/>
+
+</div>
+
+<div>
+
+The proposed methodology to avoid XAI contamination has the following steps:
+- Graph partitioning.
+- Reconstruction of broken cluster-border neighbors.
+- Batch creation and explainability computation.
+
+</div>
+
+---
+
+## Graph Partitioning
+
+<img src="images/clusters.png" width="100%"/>
+
+---
+
+## Border Reconstruction
+
+<img src="images/borders.png" width="100%"/>
+
+---
+
+## Batch Explainability
+
+<img src="images/batches.png" width="100%"/>
+
+---
+
+## Results
+
+<img src="images/cora_results.png" width="100%"/>
+                    </textarea>
+                </section>
+            </div>
+        </div>
+        <script src="mkslides-assets/reveal-js/dist/reveal.js"></script>
+        <script src="mkslides-assets/reveal-js/dist/plugin/highlight.js"></script>
+        <script src="mkslides-assets/reveal-js/dist/plugin/markdown.js"></script>
+        <script src="mkslides-assets/reveal-js/dist/plugin/math.js"></script>
+        <script src="mkslides-assets/reveal-js/dist/plugin/notes.js"></script>
+        <script src="mkslides-assets/reveal-js/dist/plugin/search.js"></script>
+        <script src="mkslides-assets/reveal-js/dist/plugin/zoom.js"></script>
+
+        
+            
+                
+                    
+                        <script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin/plugin/mermaid/mermaid.min.js"></script>
+                    
+                
+            
+                
+            
+        
+
+        <script>
+            Reveal.initialize({
+                
+                    
+                        history: true,
+                    
+                        slideNumber: "c/t",
+                    
+                        height: 1080,
+                    
+                        width: 1920,
+                    
+                        pdfMaxPagesPerSlide: 1,
+                    
+                
+                plugins: [
+                    RevealMarkdown, // Must come before the other plugins so they can hook into the generated HTML.
+                    RevealHighlight,
+                    RevealMath.KaTeX,
+                    RevealNotes,
+                    RevealSearch,
+                    RevealZoom,
+
+                    
+                        
+                            
+                                RevealMermaid,
+                            
+                        
+                            
+                        
+                    
+                ],
+            });
+        </script>
+    </body>
+</html>
