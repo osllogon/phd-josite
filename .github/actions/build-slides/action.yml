@@ -44,3 +44,4 @@ runs:
         git add -A
         git commit -m "update slides"
         git push origin gh-pages --force
+        git checkout "$CURRENT_BRANCH"
