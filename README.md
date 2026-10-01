@@ -1,6 +1,13 @@
 # Presentation for Josite Conference 2026 (ICAI)
 
-This repository contains the slides for the Josite Conference 2026 at ICAI. They are deployed with GitHub Actions and be visualized in the GitHub pages of the repository.
+This repository contains the slides for the Josite Conference 2026 at ICAI. They are deployed with GitHub Actions and be visualized in the GitHub pages of the repository
+
+## How to execute locally
+
+To execute locally and visualize these slides you just have to run the following:
+
+    cd src && uv run mkslides serve .
+
 
 ## Links
 

@@ -78,7 +78,9 @@ The proposed methodology to avoid XAI contamination has the following steps:
 
 ---
 
-## Results
+## Time vs Memory
 
 <img src="images/cora_results.png" width="100%"/>
+
+
 
